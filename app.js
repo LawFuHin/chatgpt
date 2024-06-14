@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const OpenAI = require('openai');
+const path = require('path');
+
 require('dotenv').config();
 
 const app = express();
@@ -8,13 +10,19 @@ const PORT = process.env.PORT || 3030;
 
 app.use(bodyParser.json());
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 const openai = new OpenAI({
     apiKey: process.env.APIKEY,
     baseURL: process.env.BASEURL,
 });
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('chatgpt backend');
+});
+
+app.get('/start', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.get('/healthcheck', (req, res) => {
