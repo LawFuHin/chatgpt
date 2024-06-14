@@ -39,8 +39,8 @@ app.get('/healthcheck', (req, res) => {
       ],
       model: process.env.model,
     });
-    res.send(response.choices[0].message.content);
-  });
+    res.json({ message: response.choices[0].message.content });
+});
 
 app.listen(PORT, () => {
   console.log(`nodejs running at port:${PORT}`);

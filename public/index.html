@@ -25,7 +25,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('response').textContent = data;
+                document.getElementById('response').textContent = data.message;
             })
             .catch((error) => {
                 console.error('Error:', error);
