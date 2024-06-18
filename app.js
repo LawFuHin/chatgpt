@@ -29,7 +29,7 @@ app.get("/healthcheck", (req, res) => {
   res.send("success");
 });
 
-app.get("/assitants", async (req, res) => {
+app.get("/assistants", async (req, res) => {
   const myAssistants = await openai.beta.assistants.list({
     order: "desc",
     limit: "20",
